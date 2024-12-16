@@ -2,39 +2,45 @@
 
 ## Contents
 
-- **Graph Theory**
+- **Filter-Based SLAM**
 
-  - M. R. Walter, R. M. Eustice, and J. J. Leonard, “Exactly Sparse Extended Information Filters for Feature-based SLAM,” *The International Journal of Robotics Research*, vol. 26, no. 4, pp. 335–359, Apr. 2007, doi: [10.1177/0278364906075026](https://doi.org/10.1177/0278364906075026).
-  - G. Grisetti, R. Kummerle, C. Stachniss, and W. Burgard, “A Tutorial on Graph-Based SLAM,” *IEEE Intell. Transport. Syst. Mag.*, vol. 2, no. 4, pp. 31–43, 2010, doi: [10.1109/MITS.2010.939925](https://doi.org/10.1109/MITS.2010.939925).
-  - R. Kummerle, G. Grisetti, H. Strasdat, K. Konolige, and W. Burgard, “G^2^o: A general framework for graph optimization,” in _2011 IEEE International Conference on Robotics and Automation_, Shanghai, China: IEEE, May 2011, pp. 3607–3613. doi: [10.1109/ICRA.2011.5979949](https://doi.org/10.1109/ICRA.2011.5979949).
+- **Graph-Based SLAM**
 
-- **Observability and Consistency**
+  - **Graph Theory**
+    - M. R. Walter, R. M. Eustice, and J. J. Leonard, “Exactly Sparse Extended Information Filters for Feature-based SLAM,” *The International Journal of Robotics Research*, vol. 26, no. 4, pp. 335–359, Apr. 2007, doi: [10.1177/0278364906075026](https://doi.org/10.1177/0278364906075026).
+    - G. Grisetti, R. Kummerle, C. Stachniss, and W. Burgard, “A Tutorial on Graph-Based SLAM,” *IEEE Intell. Transport. Syst. Mag.*, vol. 2, no. 4, pp. 31–43, 2010, doi: [10.1109/MITS.2010.939925](https://doi.org/10.1109/MITS.2010.939925).
+    - R. Kummerle, G. Grisetti, H. Strasdat, K. Konolige, and W. Burgard, “G^2^o: A general framework for graph optimization,” in _2011 IEEE International Conference on Robotics and Automation_, Shanghai, China: IEEE, May 2011, pp. 3607–3613. doi: [10.1109/ICRA.2011.5979949](https://doi.org/10.1109/ICRA.2011.5979949).
 
-  - C. Jauffret, “Observability and fisher information matrix in nonlinear regression,” *IEEE Transactions on Aerospace and Electronic Systems*, vol. 43, no. 2, pp. 756–759, 2007, doi: [10.1109/TAES.2007.4285368](https://doi.org/10.1109/TAES.2007.4285368).
-  - Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation,” *IEEE Robot. Autom. Lett.*, vol. 3, no. 3, pp. 2710–2717, Jul. 2018, doi: [10.1109/LRA.2018.2833152](https://doi.org/10.1109/LRA.2018.2833152).
+  - **Observability and Consistency**
+    - C. Jauffret, “Observability and fisher information matrix in nonlinear regression,” *IEEE Transactions on Aerospace and Electronic Systems*, vol. 43, no. 2, pp. 756–759, 2007, doi: [10.1109/TAES.2007.4285368](https://doi.org/10.1109/TAES.2007.4285368).
+    - Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation,” *IEEE Robot. Autom. Lett.*, vol. 3, no. 3, pp. 2710–2717, Jul. 2018, doi: [10.1109/LRA.2018.2833152](https://doi.org/10.1109/LRA.2018.2833152).
 
-- **Visual SLAM**
 
-  - *Initialization*
+  - **Initialization**
 
     - J. Mustaniemi, J. Kannala, S. Särkkä, J. Matas, and J. Heikkilä, “Inertial-Based Scale Estimation for Structure from Motion on Mobile Devices,” Aug. 11, 2017, _arXiv_: arXiv:1611.09498. doi: [10.48550/arXiv.1611.09498](https://doi.org/10.48550/arXiv.1611.09498).
 
     - T. Qin and S. Shen, “Robust initialization of monocular visual-inertial estimation on aerial robots,” in *2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Vancouver, BC: IEEE, Sep. 2017, pp. 4225–4232. doi: [10.1109/IROS.2017.8206284](https://doi.org/10.1109/IROS.2017.8206284).
 
-  - *Visual Front End*
+  - **Visual SLAM**
 
     - J. Klippenstein and H. Zhang, “Performance evaluation of visual SLAM using several feature extractors,” in *2009 IEEE/RSJ International Conference on Intelligent Robots and Systems*, St. Louis, MO, USA: IEEE, Oct. 2009, pp. 1574–1581. doi: [10.1109/IROS.2009.5354001](https://doi.org/10.1109/IROS.2009.5354001).
     - F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard, “An evaluation of the RGB-D SLAM system,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 1691–1696. doi: [10.1109/ICRA.2012.6225199](https://doi.org/10.1109/ICRA.2012.6225199).
     - J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descriptors for visual SLAM,” in *2013 European Conference on Mobile Robots*, Barcelona, Catalonia, Spain: IEEE, Sep. 2013, pp. 56–61. doi: [10.1109/ECMR.2013.6698820](https://doi.org/10.1109/ECMR.2013.6698820).
-  
-  - *Filter-based System*
-  
-  - *Optimization-based system*
-  
-  - *Stereo Camera*
-  - L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator,” May 23, 2024, *arXiv*: arXiv:2405.14539. doi: [10.48550/arXiv.2405.14539](https://doi.org/10.48550/arXiv.2405.14539).
 
-## Graph Theory
+    - S. Lovegrove, A. Patron-Perez, and G. Sibley, “Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras,” in *Procedings of the British Machine Vision Conference 2013*, Bristol: British Machine Vision Association, 2013, p. 93.1-93.11. doi: [10.5244/C.27.93](https://doi.org/10.5244/C.27.93).
+
+
+    - L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator,” May 23, 2024, *arXiv*: arXiv:2405.14539. doi: [10.48550/arXiv.2405.14539](https://doi.org/10.48550/arXiv.2405.14539).
+
+- **Learning-Based SLAM**
+
+  - S. Mokssit, D. B. Licea, B. Guermah, and M. Ghogho, “Deep Learning Techniques for Visual SLAM: A Survey,” *IEEE Access*, vol. 11, pp. 20026–20050, 2023, doi: [10.1109/ACCESS.2023.3249661](https://doi.org/10.1109/ACCESS.2023.3249661).
+
+
+## Graph-Based SLAM
+
+### Graph Theory
 
 #### Exactly Sparse Extended Information Filters for Feature-based SLAM
 
@@ -110,7 +116,7 @@ R. Kummerle, G. Grisetti, H. Strasdat, K. Konolige, and W. Burgard, “G^2^o: A 
 
 ---
 
-## Observability and Consistency
+### Observability and Consistency
 
 #### Observability and fisher information matrix in nonlinear regression
 
@@ -160,8 +166,6 @@ Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom H
 总的来说，三种方法对精度的影响并不显著。在权重合适的情况下，**Gauge Prior** 方法与 **Gauge Fixation** 几乎有相同的表现，而 **Free Gauge** 方法由于需要更少的迭代次数来收敛，消耗的时间会较少
 
 ---
-
-## Visual SLAM
 
 ### Initialization
 
@@ -355,7 +359,7 @@ $$
 
 ---
 
-### Visual Front End
+### Visual SLAM
 
 #### Performance evaluation of visual SLAM using several feature extractors
 
@@ -400,17 +404,44 @@ SIFT效果好但计算消耗大，实验采用了基于GPU运算的检测器，O
 
 J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descriptors for visual SLAM,” in *2013 European Conference on Mobile Robots*, Barcelona, Catalonia, Spain: IEEE, Sep. 2013, pp. 56–61. doi: [10.1109/ECMR.2013.6698820](https://doi.org/10.1109/ECMR.2013.6698820).
 
-特征提取器希望找到特征点亮度、尺度、平移不变的描述，使系统能够完成运动结构恢复和回环检测的任务。
-
-TODO
+特征提取器希望找到特征点亮度、尺度、平移不变的描述，使系统能够完成运动结构恢复和回环检测的任务。==TODO==
 
 ---
 
-### Filter-based System
+#### Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras
 
-### Optimization-based System
+S. Lovegrove, A. Patron-Perez, and G. Sibley, “Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras,” in *Procedings of the British Machine Vision Conference 2013*, Bristol: British Machine Vision Association, 2013, p. 93.1-93.11. doi: [10.5244/C.27.93](https://doi.org/10.5244/C.27.93).
 
-### Stereo Camera
+这篇论文主要工作是建立了卷帘相机在连续时域下的数学模型，初始化方法是用IMU对齐视觉。
+
+相比离散时域，在连续时域上表示有助于融合高帧率的传感器和异步时间戳的设备。对卷帘相机的研究尚未成熟，现有的工作主要集中在如何消除卷帘相机的畸变，而后复用标准全局快门相机的SLAM模型，这种解耦合的处理方式增加了无法修正的偏差。
+
+单目视觉系统存在7自由度不可观：6自由度姿态+尺度，一种方法通过回环检测和序列图松弛对尺度显式参数化，另一种方法是加入可以测量绝对尺度的设备。在本文中作者使用了惯性单元。相比过往建立在欧拉角上的数学表示，作者引入李群和李代数上的旋转表示避免了奇异点，同时能够更好地近似最小扭矩的轨迹。
+$$
+\bold T_{b,a} = \begin{bmatrix}
+\bold R_{b,a} & \bold a_b \\
+\bold 0^T & 1
+\end{bmatrix},\ \bold T_{b,a}\in\mathbb{SE}3,\ \bold R_{b,a}\in\mathbb{SO}3
+$$
+作者希望轨迹的参数化方程是局部可控，二阶导连续，能近似最小力矩轨迹的。三次B样条曲线可以很好表示 $\R^3$ 上的轨迹，但在三维旋转上表现一般。因此作者选用了李代数上的累计基函数，这种函数最早被应用在计算机动画中的四元数插值中。
+
+自由度为 $k-1$ 的B样条曲线的标准基函数表示为
+$$
+\begin{aligned}
+\bold p(t) &= \sum_{i=0}^n\bold p_i B_{i,k}(t) \\
+&= \bold p_0 B_{0,k}(t) + \bold p_1 B_{1,k}(t) + \cdots + \bold p_n B_{n,k}(t) \\
+&= \bold p_0B_{0,k}(t) + \sum_{i=1}^{n-1}\bold p_iB_{i,k}(t) + \bold p_nB_{n,k}(t) \\
+&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n\bold p_i\sum_{j=i}^nB_{j,k}(t) - \sum_{i=0}^{n-1}\bold p_i\sum_{j=i+1}^nB_{j,k}(t) \\
+&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n(\bold p_i-\bold p_{i-1})\tilde B_{i,k}(t)
+\end{aligned}
+$$
+其中 $\bold p_i\in\R^N$ 是在 $t_i,i\in[0,\dots,n]$ 时刻的控制点，$B_{i,k}(t)$ 是由德伯尔-考克斯递归公式 De Boor - Cox recursive formula 计算得到的基函数。进一步利用李群的指数映射和对数映射，将公式重写在李群域上
+$$
+\bold T_{w,s}(t) = \exp(\tilde B_{0,k}\log(\bold T_{w,0}))\prod_{i=1}\exp(\tilde B_{i,k}(t)\log(\bold T_{w,i-1}^{-1}\bold T_{w,i}))
+$$
+==TODO==
+
+---
 
 #### VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator
 
@@ -422,3 +453,20 @@ L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-I
 
 ---
 
+## Learning-Based SLAM
+
+
+
+#### Deep Learning Techniques for Visual SLAM: A Survey
+
+S. Mokssit, D. B. Licea, B. Guermah, and M. Ghogho, “Deep Learning Techniques for Visual SLAM: A Survey,” *IEEE Access*, vol. 11, pp. 20026–20050, 2023, doi: [10.1109/ACCESS.2023.3249661](https://doi.org/10.1109/ACCESS.2023.3249661).
+
+作者首先回顾了基于图优化视觉SLAM的基本工作框架，由视觉前端负责提取和追踪特征点，将特征点和关键帧传入后端进行全局位姿图优化，同时回环检测模块进行重定位工作。这一工作框架在图优化SLAM的发展中证实了其可靠有效，但在面对复杂多变的环境和日益灵活的上游任务时则显得窘迫。
+
+<img src="./assets/image-20241216234425636.png" alt="image-20241216234425636" style="zoom:33%;" />
+
+因此基于学习的SLAM应运而生，
+
+==TODO==
+
+---
