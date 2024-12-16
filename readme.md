@@ -24,11 +24,15 @@
   - *Visual Front End*
 
     - J. Klippenstein and H. Zhang, “Performance evaluation of visual SLAM using several feature extractors,” in *2009 IEEE/RSJ International Conference on Intelligent Robots and Systems*, St. Louis, MO, USA: IEEE, Oct. 2009, pp. 1574–1581. doi: [10.1109/IROS.2009.5354001](https://doi.org/10.1109/IROS.2009.5354001).
+    - F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard, “An evaluation of the RGB-D SLAM system,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 1691–1696. doi: [10.1109/ICRA.2012.6225199](https://doi.org/10.1109/ICRA.2012.6225199).
     - J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descriptors for visual SLAM,” in *2013 European Conference on Mobile Robots*, Barcelona, Catalonia, Spain: IEEE, Sep. 2013, pp. 56–61. doi: [10.1109/ECMR.2013.6698820](https://doi.org/10.1109/ECMR.2013.6698820).
-
+  
+  - *Filter-based System*
+  
+  - *Optimization-based system*
+  
   - *Stereo Camera*
-
-    - L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator,” May 23, 2024, *arXiv*: arXiv:2405.14539. doi: [10.48550/arXiv.2405.14539](https://doi.org/10.48550/arXiv.2405.14539).
+  - L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator,” May 23, 2024, *arXiv*: arXiv:2405.14539. doi: [10.48550/arXiv.2405.14539](https://doi.org/10.48550/arXiv.2405.14539).
 
 ## Graph Theory
 
@@ -343,7 +347,7 @@ $$
 
 接着为所有 $c_0$ 系为坐标系的向量左乘 $\mathbf R_{wc_0}$，同时将非米制的 $\bar{\mathbf p}$ 通过尺度因子 $s$ 恢复为 $\mathbf p$
 
-##### 未估计的量
+##### 未估计的参数
 
 作者通过实验指出二者加速度计偏置 $\mathbf b^a$ 和相机与IMU间的平移向量 $\mathbf p_{bc}$ 对系统精度影响极小，可以不在初始化中显式优化
 
@@ -366,11 +370,29 @@ $$
 \overline{\text{AU}} = \frac1N\sum_{i=1}^N\sum_{k=1}^{N_s}\frac43\pi\sqrt{\det(\Sigma_{k,r})}
 $$
 
-实验表明，在大部分室内情况下三种特征提取器的累计不确定性没有显著差异，平均归一化误差也遵循相同的趋势，表现几乎相似。在累计不确定性上，SIFT的表现稍稍更优秀。
+实验表明，在大部分室内情况下三种特征提取器的累计不确定性没有显著差异，平均归一化误差也遵循相同的趋势，表现几乎相似。在累计不确定性上，SIFT的表现稍稍更优秀。但本文并没有涉及到特征匹配的相关比较。
 
 <img src="./assets/image-20241216173936054-1734341979242-9.png" alt="image-20241216173936054" style="zoom: 50%;" />
 
 <img src="./assets/image-20241216174010595.png" alt="image-20241216174010595" style="zoom:50%;" />
+
+---
+
+#### An evaluation of the RGB-D SLAM system
+
+F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard, “An evaluation of the RGB-D SLAM system,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 1691–1696. doi: [10.1109/ICRA.2012.6225199](https://doi.org/10.1109/ICRA.2012.6225199).
+
+SIFT效果好但计算消耗大，实验采用了基于GPU运算的检测器，ORB计算快并且可以应对视角变换，过少的SURF特征点会导致不准确和运动估计解算失败，过多的特征点让特征匹配变慢并且可能生成更多的假阳匹配，因此实验采用了可变的阈值来维持一定数量的SURF特征点。
+
+三对特征点是刚体变换中所需要的最少的对应点，由此利用RANSAC拒绝错误匹配。然后将特征的位置通过深度信息转换到三维空间，但由于深度相机与彩色相机的快门缺乏同步并且视觉中突出的点往往处于物体便捷，导致三维特征位置往往会有错误的深度。
+
+在这一工作中新捕获的帧会和过往的20帧（3帧最新的和17帧均匀分布的更早的帧）进行比较，如果能够匹配则插入到图中。如果不能和它们匹配，取决于系统一般有两种策略：容忍图碎片化，即存在无边连接的节点，等待后续的回环检测以连接。或在假设运动模型恒定的前提下，将其连接到图的前一个节点中，但这可能导致更高的误差。在这一评估工作中，采用了后者的策略。地图使用基于八叉树的体素地图OctoMap.
+
+第一轮实验中作者在9个FR1数据集上进行测试，最好的测试效果在简单的xyz和rpy序列中取得，最差结果在穿越办公空间的长回合中取得。相比SIFT和SURF在帧之间重合较少、角速度线速度较快的情况下仍能较好的追踪轨迹，ORB特征相比不那么准确，也无法通过调整检测器的参数找到更多关键点来解决。
+
+![c6dbb809c4ab1a6b694b60868d67c9fd](./assets/c6dbb809c4ab1a6b694b60868d67c9fd.jpg)
+
+在实验的过程中作者还发现，当图中存在错误边时会使映射结果变差。作者希望在后续优化关键点匹配方案：如添加特征字典、修建从未被匹配的特征以及直接将关键点作为地标进行非线性优化。
 
 ---
 
@@ -380,7 +402,13 @@ J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descr
 
 特征提取器希望找到特征点亮度、尺度、平移不变的描述，使系统能够完成运动结构恢复和回环检测的任务。
 
+TODO
+
 ---
+
+### Filter-based System
+
+### Optimization-based System
 
 ### Stereo Camera
 
