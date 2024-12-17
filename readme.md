@@ -2,45 +2,46 @@
 
 ## Contents
 
-- **Filter-Based SLAM**
+- **[Filter-Based SLAM](#Filter-Based SLAM)**
 
-- **Graph-Based SLAM**
+  - *[Dynamic Bayesian Network](#Dynamic Bayesian Network)*
 
-  - **Graph Theory**
-    - M. R. Walter, R. M. Eustice, and J. J. Leonard, “Exactly Sparse Extended Information Filters for Feature-based SLAM,” *The International Journal of Robotics Research*, vol. 26, no. 4, pp. 335–359, Apr. 2007, doi: [10.1177/0278364906075026](https://doi.org/10.1177/0278364906075026).
-    - G. Grisetti, R. Kummerle, C. Stachniss, and W. Burgard, “A Tutorial on Graph-Based SLAM,” *IEEE Intell. Transport. Syst. Mag.*, vol. 2, no. 4, pp. 31–43, 2010, doi: [10.1109/MITS.2010.939925](https://doi.org/10.1109/MITS.2010.939925).
-    - R. Kummerle, G. Grisetti, H. Strasdat, K. Konolige, and W. Burgard, “G^2^o: A general framework for graph optimization,” in _2011 IEEE International Conference on Robotics and Automation_, Shanghai, China: IEEE, May 2011, pp. 3607–3613. doi: [10.1109/ICRA.2011.5979949](https://doi.org/10.1109/ICRA.2011.5979949).
+- **[Graph-Based SLAM](#Graph-Based SLAM)**
 
-  - **Observability and Consistency**
-    - C. Jauffret, “Observability and fisher information matrix in nonlinear regression,” *IEEE Transactions on Aerospace and Electronic Systems*, vol. 43, no. 2, pp. 756–759, 2007, doi: [10.1109/TAES.2007.4285368](https://doi.org/10.1109/TAES.2007.4285368).
-    - Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation,” *IEEE Robot. Autom. Lett.*, vol. 3, no. 3, pp. 2710–2717, Jul. 2018, doi: [10.1109/LRA.2018.2833152](https://doi.org/10.1109/LRA.2018.2833152).
-
-
-  - **Initialization**
-
-    - J. Mustaniemi, J. Kannala, S. Särkkä, J. Matas, and J. Heikkilä, “Inertial-Based Scale Estimation for Structure from Motion on Mobile Devices,” Aug. 11, 2017, _arXiv_: arXiv:1611.09498. doi: [10.48550/arXiv.1611.09498](https://doi.org/10.48550/arXiv.1611.09498).
-
-    - T. Qin and S. Shen, “Robust initialization of monocular visual-inertial estimation on aerial robots,” in *2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Vancouver, BC: IEEE, Sep. 2017, pp. 4225–4232. doi: [10.1109/IROS.2017.8206284](https://doi.org/10.1109/IROS.2017.8206284).
-
-  - **Visual SLAM**
-
-    - J. Klippenstein and H. Zhang, “Performance evaluation of visual SLAM using several feature extractors,” in *2009 IEEE/RSJ International Conference on Intelligent Robots and Systems*, St. Louis, MO, USA: IEEE, Oct. 2009, pp. 1574–1581. doi: [10.1109/IROS.2009.5354001](https://doi.org/10.1109/IROS.2009.5354001).
-    - F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard, “An evaluation of the RGB-D SLAM system,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 1691–1696. doi: [10.1109/ICRA.2012.6225199](https://doi.org/10.1109/ICRA.2012.6225199).
-    - J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descriptors for visual SLAM,” in *2013 European Conference on Mobile Robots*, Barcelona, Catalonia, Spain: IEEE, Sep. 2013, pp. 56–61. doi: [10.1109/ECMR.2013.6698820](https://doi.org/10.1109/ECMR.2013.6698820).
-
-    - S. Lovegrove, A. Patron-Perez, and G. Sibley, “Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras,” in *Procedings of the British Machine Vision Conference 2013*, Bristol: British Machine Vision Association, 2013, p. 93.1-93.11. doi: [10.5244/C.27.93](https://doi.org/10.5244/C.27.93).
+  - *[Factor Graph](#Factor Graph)*
+    - [A Tutorial on Graph-Based SLAM](#A Tutorial on Graph-Based SLAM)
+    
+  - *[Observability and Consistency](#Observability and Consistency)*
+    - [On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation](#On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation)
 
 
-    - L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator,” May 23, 2024, *arXiv*: arXiv:2405.14539. doi: [10.48550/arXiv.2405.14539](https://doi.org/10.48550/arXiv.2405.14539).
+
+    - *[Initialization](#Initialization)*
+
+      - [Robust initialization of monocular visual-inertial estimation on aerial robots](#Robust initialization of monocular visual-inertial estimation on aerial robots)
+      - [Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras](#Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras)
+
+
+
+    - *[Visual SLAM](#Visual SLAM)*
+    - *[Lidar/Radar SLAM](#Lidar/Radar SLAM)*
+    - *[Multi-Sensor SLAM](#Multi-Sensor SLAM)*
+
 
 - **Learning-Based SLAM**
+  - Survey
+  - Computer Vision
+  
+- **[SLAM for Swarm](#SLAM for Swarm)**
 
-  - S. Mokssit, D. B. Licea, B. Guermah, and M. Ghogho, “Deep Learning Techniques for Visual SLAM: A Survey,” *IEEE Access*, vol. 11, pp. 20026–20050, 2023, doi: [10.1109/ACCESS.2023.3249661](https://doi.org/10.1109/ACCESS.2023.3249661).
+## Filter-Based SLAM
+
+### Dynamic Bayesian Network
 
 
 ## Graph-Based SLAM
 
-### Graph Theory
+### Factor Graph
 
 #### Exactly Sparse Extended Information Filters for Feature-based SLAM
 
@@ -167,11 +168,19 @@ Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom H
 
 ---
 
+#### Consistency analysis for sliding-window visual odometry
+
+T.-C. Dong-Si and A. I. Mourikis, “Consistency analysis for sliding-window visual odometry,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 5202–5209. doi: [10.1109/ICRA.2012.6225246](https://doi.org/10.1109/ICRA.2012.6225246).
+
+在边际化过程中看似信息增加，实则可信度下降了，造成了可观性的退化。将FEJ方法应用在滑窗，避免了秩的增加和虚假信息的产生。但这导致线性化精确程度的失准，不过这种损失并不显著。
+
+---
+
 ### Initialization
 
 #### Inertial-Based Scale Estimation for Structure from Motion on Mobile Devices
 
-J. Mustaniemi, J. Kannala, S. Särkkä, J. Matas, and J. Heikkilä, “Inertial-Based Scale Estimation for Structure from Motion on Mobile Devices,” Aug. 11, 2017, _arXiv_: arXiv:1611.09498. doi: [10.48550/arXiv.1611.09498](https://doi.org/10.48550/arXiv.1611.09498).
+J. Mustaniemi, J. Kannala, S. Särkkä, J. Matas, and J. Heikkilä, “Inertial-based scale estimation for structure from motion on mobile devices,” in *2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Vancouver, BC, Canada: IEEE Press, 2017, pp. 4394–4401. doi: [10.1109/IROS.2017.8206303](https://doi.org/10.1109/IROS.2017.8206303).
 
 利用IMU原始信息而不是积分信息完成对齐工作，避免误差在预积分过程中被累计，开源了MATLAB代码。
 
@@ -359,6 +368,70 @@ $$
 
 ---
 
+#### Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras
+
+S. Lovegrove, A. Patron-Perez, and G. Sibley, “Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras,” in *Procedings of the British Machine Vision Conference 2013*, Bristol: British Machine Vision Association, 2013, p. 93.1-93.11. doi: [10.5244/C.27.93](https://doi.org/10.5244/C.27.93).
+
+这篇论文主要工作是建立了卷帘相机在连续时域下的数学模型，初始化方法是用IMU对齐视觉。
+
+相比离散时域，在连续时域上表示有助于融合高帧率的传感器和异步时间戳的设备。对卷帘相机的研究尚未成熟，现有的工作主要集中在如何消除卷帘相机的畸变，而后复用标准全局快门相机的SLAM模型，这种解耦合的处理方式增加了无法修正的偏差。
+
+单目视觉系统存在7自由度不可观：6自由度姿态+尺度，一种方法通过回环检测和序列图松弛对尺度显式参数化，另一种方法是加入可以测量绝对尺度的设备。在本文中作者使用了惯性单元。相比过往建立在欧拉角上的数学表示，作者引入李群和李代数上的旋转表示避免了奇异点，同时能够更好地近似最小扭矩的轨迹。
+$$
+\bold T_{b,a} = \begin{bmatrix}
+\bold R_{b,a} & \bold a_b \\
+\bold 0^T & 1
+\end{bmatrix},\ \bold T_{b,a}\in\mathbb{SE}3,\ \bold R_{b,a}\in\mathbb{SO}3
+$$
+作者希望轨迹的参数化方程是局部可控，二阶导连续，能近似最小力矩轨迹的。三次B样条曲线可以很好表示 $\R^3$ 上的轨迹，但在三维旋转上表现一般。因此作者选用了李代数上的累计基函数，这种函数最早被应用在计算机动画中的四元数插值中。
+
+自由度为 $k-1$ 的B样条曲线的标准基函数表示为
+$$
+\begin{aligned}
+\bold p(t) &= \sum_{i=0}^n\bold p_i B_{i,k}(t) \\
+&= \bold p_0 B_{0,k}(t) + \bold p_1 B_{1,k}(t) + \cdots + \bold p_n B_{n,k}(t) \\
+&= \bold p_0B_{0,k}(t) + \sum_{i=1}^{n-1}\bold p_iB_{i,k}(t) + \bold p_nB_{n,k}(t) \\
+&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n\bold p_i\sum_{j=i}^nB_{j,k}(t) - \sum_{i=0}^{n-1}\bold p_i\sum_{j=i+1}^nB_{j,k}(t) \\
+&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n(\bold p_i-\bold p_{i-1})\tilde B_{i,k}(t)
+\end{aligned}
+$$
+其中 $\bold p_i\in\R^N$ 是在 $t_i,i\in[0,\dots,n]$ 时刻的控制点，$B_{i,k}(t)$ 是由德伯尔-考克斯递归公式 De Boor - Cox recursive formula 计算得到的基函数。进一步利用李群的指数映射和对数映射，将公式重写在李群域上
+$$
+\bold T_{w,s}(t) = \exp(\tilde B_{0,k}\log(\bold T_{w,0}))\prod_{i=1}\exp(\tilde B_{i,k}(t)\log(\bold T_{w,i-1}^{-1}\bold T_{w,i}))
+$$
+作者进一步在假设控制点时间间隔不变的情况下（大多数单目系统应该都能满足），对时间做了归一化处理
+$$
+u(t) = \frac{t-t_0}{\Delta t} - s_i
+$$
+并在参数 $k=4$ 下转化为矩阵表达
+$$
+\tilde{\bold B}(u) = \bold C\begin{bmatrix}1\\u\\u^2\\u^3\end{bmatrix},\dot{\tilde{\bold B}}(u) = \bold C\begin{bmatrix}0\\1\\2u\\3u^2\end{bmatrix},\ddot{\tilde{\bold B}}(u) = \bold C\begin{bmatrix}0\\0\\2\\6u\end{bmatrix},\bold C=\frac16\begin{bmatrix}6&0&0&0\\5&3&-3&1\\1&3&3&-2\\0&0&0&1\end{bmatrix}
+$$
+
+$$
+\bold T_{w,s}(u) = \bold T_{w,i-1}\prod_{j=1}^3\exp(\tilde{\bold B}(u)_j\log(\bold T_{w,i+j-1}^{-1}\bold T_{w,i+j}))
+$$
+
+$\dot{\bold T}_{w,s},\ddot{\bold T}_{w,s}$ 则由链式法则和指数映射的一阶近似得到
+
+给定第一次观测的逆深度 $\rho\in\R^+$, 对应点在两帧的坐标分别为 $\bold p_a,\bold p_b\in\R^2$, 其中 $\pi(\bold P)=\frac1{P_2}[P_0,P_1]^T$
+$$
+\bold p_b = \mathcal W(\bold p_a;\bold T_{b,a},\rho)=\pi\bigg(\begin{bmatrix}\bold K_b&\bold 0\end{bmatrix}\bold T_{b,a}\begin{bmatrix}\bold K_a^{-1}\begin{bmatrix}\bold p_a\\1\end{bmatrix}&\rho\end{bmatrix}\bigg)
+$$
+对于一般的视觉惯性系统给出损失函数
+
+<img src="./assets/image-20241217134126216.png" alt="image-20241217134126216" style="zoom: 50%;" />
+
+而对卷帘相机则将 $\bold p_b$ 用 $\bold p_b(t)$ 替代重新建模
+
+<img src="./assets/image-20241217134242665.png" alt="image-20241217134242665" style="zoom:50%;" />
+
+<img src="./assets/image-20241217134300099.png" alt="image-20241217134300099" style="zoom:50%;" />
+
+这一系统表现出了良好的自校准的能力
+
+---
+
 ### Visual SLAM
 
 #### Performance evaluation of visual SLAM using several feature extractors
@@ -404,44 +477,45 @@ SIFT效果好但计算消耗大，实验采用了基于GPU运算的检测器，O
 
 J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descriptors for visual SLAM,” in *2013 European Conference on Mobile Robots*, Barcelona, Catalonia, Spain: IEEE, Sep. 2013, pp. 56–61. doi: [10.1109/ECMR.2013.6698820](https://doi.org/10.1109/ECMR.2013.6698820).
 
-特征提取器希望找到特征点亮度、尺度、平移不变的描述，使系统能够完成运动结构恢复和回环检测的任务。==TODO==
+特征提取器希望找到特征点亮度、尺度、平移不变的描述，使系统能够完成运动结构恢复和回环检测的任务。
+
+<img src="./assets/image-20241217134940615.png" alt="image-20241217134940615" style="zoom:33%;" />
+
+作者在RGBD数据集和自己的数据集上做了实验，表明SIFT有最好的表现但最耗费计算资源，BRIEF在二进制描述子中有最好的表现，大多数情况下选择哪种描述子对精度事实上影响并不大。
 
 ---
 
-#### Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras
+### Lidar/Radar SLAM
 
-S. Lovegrove, A. Patron-Perez, and G. Sibley, “Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras,” in *Procedings of the British Machine Vision Conference 2013*, Bristol: British Machine Vision Association, 2013, p. 93.1-93.11. doi: [10.5244/C.27.93](https://doi.org/10.5244/C.27.93).
+[1]
 
-这篇论文主要工作是建立了卷帘相机在连续时域下的数学模型，初始化方法是用IMU对齐视觉。
+W. Xu and F. Zhang, “FAST-LIO: A Fast, Robust LiDAR-Inertial Odometry Package by Tightly-Coupled Iterated Kalman Filter,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 2, pp. 3317–3324, Apr. 2021, doi: [10.1109/LRA.2021.3064227](https://doi.org/10.1109/LRA.2021.3064227).
 
-相比离散时域，在连续时域上表示有助于融合高帧率的传感器和异步时间戳的设备。对卷帘相机的研究尚未成熟，现有的工作主要集中在如何消除卷帘相机的畸变，而后复用标准全局快门相机的SLAM模型，这种解耦合的处理方式增加了无法修正的偏差。
 
-单目视觉系统存在7自由度不可观：6自由度姿态+尺度，一种方法通过回环检测和序列图松弛对尺度显式参数化，另一种方法是加入可以测量绝对尺度的设备。在本文中作者使用了惯性单元。相比过往建立在欧拉角上的数学表示，作者引入李群和李代数上的旋转表示避免了奇异点，同时能够更好地近似最小扭矩的轨迹。
-$$
-\bold T_{b,a} = \begin{bmatrix}
-\bold R_{b,a} & \bold a_b \\
-\bold 0^T & 1
-\end{bmatrix},\ \bold T_{b,a}\in\mathbb{SE}3,\ \bold R_{b,a}\in\mathbb{SO}3
-$$
-作者希望轨迹的参数化方程是局部可控，二阶导连续，能近似最小力矩轨迹的。三次B样条曲线可以很好表示 $\R^3$ 上的轨迹，但在三维旋转上表现一般。因此作者选用了李代数上的累计基函数，这种函数最早被应用在计算机动画中的四元数插值中。
 
-自由度为 $k-1$ 的B样条曲线的标准基函数表示为
-$$
-\begin{aligned}
-\bold p(t) &= \sum_{i=0}^n\bold p_i B_{i,k}(t) \\
-&= \bold p_0 B_{0,k}(t) + \bold p_1 B_{1,k}(t) + \cdots + \bold p_n B_{n,k}(t) \\
-&= \bold p_0B_{0,k}(t) + \sum_{i=1}^{n-1}\bold p_iB_{i,k}(t) + \bold p_nB_{n,k}(t) \\
-&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n\bold p_i\sum_{j=i}^nB_{j,k}(t) - \sum_{i=0}^{n-1}\bold p_i\sum_{j=i+1}^nB_{j,k}(t) \\
-&= \bold p_0\tilde B_{0,k}(t) + \sum_{i=1}^n(\bold p_i-\bold p_{i-1})\tilde B_{i,k}(t)
-\end{aligned}
-$$
-其中 $\bold p_i\in\R^N$ 是在 $t_i,i\in[0,\dots,n]$ 时刻的控制点，$B_{i,k}(t)$ 是由德伯尔-考克斯递归公式 De Boor - Cox recursive formula 计算得到的基函数。进一步利用李群的指数映射和对数映射，将公式重写在李群域上
-$$
-\bold T_{w,s}(t) = \exp(\tilde B_{0,k}\log(\bold T_{w,0}))\prod_{i=1}\exp(\tilde B_{i,k}(t)\log(\bold T_{w,i-1}^{-1}\bold T_{w,i}))
-$$
-==TODO==
+[2]
+
+W. Xu, Y. Cai, D. He, J. Lin, and F. Zhang, “FAST-LIO2: Fast Direct LiDAR-Inertial Odometry,” *IEEE Trans. Robot.*, vol. 38, no. 4, pp. 2053–2073, Aug. 2022, doi: [10.1109/TRO.2022.3141876](https://doi.org/10.1109/TRO.2022.3141876).
+
+
+
+[3]
+
+J. Lin and F. Zhang, “Loam livox: A fast, robust, high-precision LiDAR odometry and mapping package for LiDARs of small FoV,” in *2020 IEEE International Conference on Robotics and Automation (ICRA)*, Paris, France: IEEE, May 2020, pp. 3126–3131. doi: [10.1109/ICRA40945.2020.9197440](https://doi.org/10.1109/ICRA40945.2020.9197440).
 
 ---
+
+### Multi-Sensor SLAM
+
+[1]
+
+J. Lin and F. Zhang, “R3 LIVE: A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package,” in *2022 International Conference on Robotics and Automation (ICRA)*, Philadelphia, PA, USA: IEEE, May 2022, pp. 10672–10678. doi: [10.1109/ICRA46639.2022.9811935](https://doi.org/10.1109/ICRA46639.2022.9811935).
+
+
+
+[2]
+
+J. Lin, C. Zheng, W. Xu, and F. Zhang, “R2 LIVE: A Robust, Real-Time, LiDAR-Inertial-Visual Tightly-Coupled State Estimator and Mapping,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 4, pp. 7469–7476, Oct. 2021, doi: [10.1109/LRA.2021.3095515](https://doi.org/10.1109/LRA.2021.3095515).
 
 #### VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator
 
@@ -455,7 +529,7 @@ L. Wang, Y. Xu, and S. Shen, “VINS-Multi: A Robust Asynchronous Multi-camera-I
 
 ## Learning-Based SLAM
 
-
+### Survey
 
 #### Deep Learning Techniques for Visual SLAM: A Survey
 
@@ -465,8 +539,128 @@ S. Mokssit, D. B. Licea, B. Guermah, and M. Ghogho, “Deep Learning Techniques 
 
 <img src="./assets/image-20241216234425636.png" alt="image-20241216234425636" style="zoom:33%;" />
 
-因此基于学习的SLAM应运而生，
+因此基于学习的SLAM应运而生，作者接着针对不同类别的深度学习分别展开论述
+
+<img src="./assets/image-20241217155100282.png" alt="image-20241217155100282" style="zoom:33%;" />
+
+##### 模块化学习 Modular Learning
+
+分别回顾了传统方法在深度估计、光流、视觉里程计、定位、回环检测的方法，并给出了在各个领域上的深度学习方法
+
+###### 深度估计 Depth Estimation
+
+多目系统上的深度估计常表示为
+$$
+E(D)=\sum_x C(x,d_x) +\sum_x\sum_{y\in N_x} E_s(d_x,d_y)
+$$
+$C(x,d_x)$ 左图像素 $x=(i,j)$ 和右图像素 $y=(i,j-d_x)$ 的相似度以及一致性或约束正则项 $E_s(·)$ 的和，这种方法在外界条件合适的情况下表现不错，但是缺点是迭代优化 $D$ 需要消耗大量计算资源。
+
+在监督学习中最早利用CNN计算左右图像的相似性，然后将相似性加载到决策网络，在通过上文的公式进行迭代优化。但这种解耦的优化模式使系统对噪声敏感，会收到遮挡和周期性外部条件的影响。另一种方式是直接利用左右图像生成回归视差图，优点是不需要显式配对特征节省了计算成本。在单目相机上的早期尝试是利用CNNs对深度信息回归估计，后面引入了细化网络和不同权重策略。
+
+而在自监督学习上
+
+##### 联合学习 Joint Learning
+
+
+
+##### 置信学习 Confidence Learning
+
+
+
+##### 主动学习 Active Learning
 
 ==TODO==
 
+### Computer Vision
+
+#### Depth map prediction from a single image using a multi-scale deep network
+
+D. Eigen, C. Puhrsch, and R. Fergus, “Depth map prediction from a single image using a multi-scale deep network,” in *Proceedings of the 27th International Conference on Neural Information Processing Systems - Volume 2*, in NIPS’14. Cambridge, MA, USA: MIT Press, 2014, pp. 2366–2374.
+
+提出了一种尺度不变的损失函数
+$$
+\begin{aligned}
+D(y,y^*) &= \frac1n\sum_{i=1}^n(\log y_i-\log y_i^* + \alpha(y,y^*))^2 \\
+&= \frac1n\sum_{i=1}^n(\log y_i-\log y_i^* + \frac1n\sum_{j=1}^n(\log y_j^*-\log y_j))^2 \\
+&= \frac1{n^2}\sum_{i,j}((\log y_i-\log y_j) - (\log y_i^*-\log y_j^*))^2 \\
+&= \frac1n\sum_i (\log y_i-\log y_i^*)^2-\frac1{n^2}\sum_{i,j}(\log y_i-\log y_i^*)(\log y_j-\log y_j^*) \\
+&= \frac1n\sum_i d_i^2 - \frac1{n^2}\bigg(\sum_i d_i\bigg)^2
+\end{aligned}
+$$
+同时提出了粗细网络分步学习的网络结构：先利用粗网络生成分辨率较低的图像，再利用细网络对分辨率精细化处理。好处是粗网络输出的每个结果依赖于图像的全局信息，而细网络输出的每个结果则只依赖局部信息。
+
+<img src="./assets/image-20241217162202716.png" alt="image-20241217162202716" style="zoom:44%;" />
+
 ---
+
+#### Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture
+
+D. Eigen and R. Fergus, “Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture,” in *2015 IEEE International Conference on Computer Vision (ICCV)*, Santiago, Chile: IEEE, Dec. 2015, pp. 2650–2658. doi: [10.1109/ICCV.2015.304](https://doi.org/10.1109/ICCV.2015.304).
+
+在作者2014年工作的基础上增加了多种尺度的细化网络，使网络能够适应不同尺度的特征
+
+<img src="./assets/image-20241217164519123.png" alt="image-20241217164519123" style="zoom:50%;" />
+
+---
+
+#### Deep Ordinal Regression Network for Monocular Depth Estimation
+
+H. Fu, M. Gong, C. Wang, K. Batmanghelich, and D. Tao, “Deep Ordinal Regression Network for Monocular Depth Estimation,” in *2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, Los Alamitos, CA, USA: IEEE Computer Society, Jun. 2018, pp. 2002–2011. doi: [10.1109/CVPR.2018.00214](https://doi.org/10.1109/CVPR.2018.00214).
+
+提出了一种 Spacing-Discretization 策略，让网络更在意近处物体的深度信息的准确性
+
+<img src="./assets/image-20241217165049845.png" alt="image-20241217165049845" style="zoom:50%;" />
+$$
+\begin{aligned}
+\text{UD:}\ & t_i = \alpha + (\beta-\alpha)\frac iK \\
+\text{SID:}\ & t_i = e^{\log\alpha + \frac iK\log\frac\beta\alpha}
+\end{aligned}
+$$
+<img src="./assets/image-20241217165527844.png" alt="image-20241217165527844" style="zoom:50%;" />
+
+---
+
+#### CAM-Convs: Camera-Aware Multi-Scale Convolutions for Single-View Depth
+
+J. M. Facil, B. Ummenhofer, H. Zhou, L. Montesano, T. Brox, and J. Civera, “CAM-Convs: Camera-Aware Multi-Scale Convolutions for Single-View Depth,” in *2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, Long Beach, CA, USA: IEEE, Jun. 2019, pp. 11818–11827. doi: [10.1109/CVPR.2019.01210](https://doi.org/10.1109/CVPR.2019.01210).
+
+针对不同相机模型，设计了不同卷积模型
+
+<img src="./assets/image-20241217170022311.png" alt="image-20241217170022311" style="zoom:33%;" />
+
+---
+
+## SLAM for Swarm
+
+
+
+远距离时需要全局一致性
+
+#### Cooperative Transportation Using Small Quadrotors Using Monocular Vision and Inertial Sensing
+
+G. Loianno and V. Kumar, “Cooperative Transportation Using Small Quadrotors Using Monocular Vision and Inertial Sensing,” *IEEE Robot. Autom. Lett.*, vol. 3, no. 2, pp. 680–687, Apr. 2018, doi: [10.1109/LRA.2017.2778018](https://doi.org/10.1109/LRA.2017.2778018).
+
+---
+
+[2]
+
+D. Saldana, B. Gabrich, G. Li, M. Yim, and V. Kumar, “ModQuad: The Flying Modular Structure that Self-Assembles in Midair,” in *2018 IEEE International Conference on Robotics and Automation (ICRA)*, Brisbane, QLD: IEEE, May 2018, pp. 691–698. doi: [10.1109/ICRA.2018.8461014](https://doi.org/10.1109/ICRA.2018.8461014).
+
+
+
+近距离时需要高精度相对定位
+
+[1]
+
+X. Zhou, J. Zhu, H. Zhou, C. Xu, and F. Gao, “EGO-Swarm: A Fully Autonomous and Decentralized Quadrotor Swarm System in Cluttered Environments,” in *2021 IEEE International Conference on Robotics and Automation (ICRA)*, Xi’an, China: IEEE, May 2021, pp. 4101–4107. doi: [10.1109/ICRA48506.2021.9561902](https://doi.org/10.1109/ICRA48506.2021.9561902).
+
+https://blog.csdn.net/qq_45858842/article/details/139306068
+
+[2]
+
+P. C. Lusk, X. Cai, S. Wadhwania, A. Paris, K. Fathian, and J. P. How, “A Distributed Pipeline for Scalable, Deconflicted Formation Flying,” *IEEE Robot. Autom. Lett.*, vol. 5, no. 4, pp. 5213–5220, Oct. 2020, doi: [10.1109/LRA.2020.3006823](https://doi.org/10.1109/LRA.2020.3006823).
+
+
+
+omni swarm去中心化通讯
+
