@@ -10,29 +10,25 @@
 
   - *[Factor Graph](#Factor Graph)*
     - [A Tutorial on Graph-Based SLAM](#A Tutorial on Graph-Based SLAM)
-    
   - *[Observability and Consistency](#Observability and Consistency)*
     - [On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation](#On the Comparison of Gauge Freedom Handling in Optimization-Based Visual-Inertial State Estimation)
-
-
-
-    - *[Initialization](#Initialization)*
-
-      - [Robust initialization of monocular visual-inertial estimation on aerial robots](#Robust initialization of monocular visual-inertial estimation on aerial robots)
-      - [Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras](#Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras)
-
-
-
-    - *[Visual SLAM](#Visual SLAM)*
-    - *[Lidar/Radar SLAM](#Lidar/Radar SLAM)*
-    - *[Multi-Sensor SLAM](#Multi-Sensor SLAM)*
-
+  - *[Initialization](#Initialization)*
+    - [Robust initialization of monocular visual-inertial estimation on aerial robots](#Robust initialization of monocular visual-inertial estimation on aerial robots)
+    - [Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras](#Spline Fusion: A continuous-time representation for visual-inertial fusion with application to rolling shutter cameras)
+  - *[Visual SLAM](#Visual SLAM)*
+  - *[Lidar SLAM](#Lidar SLAM)*
+  - *[Radar SLAM](#Radar SLAM)*
+  - *[Multi-Sensor SLAM](#Multi-Sensor SLAM)*
 
 - **Learning-Based SLAM**
   - Survey
   - Computer Vision
   
 - **[SLAM for Swarm](#SLAM for Swarm)**
+  - [EGO-Swarm: A Fully Autonomous and Decentralized Quadrotor Swarm System in Cluttered Environments](#EGO-Swarm: A Fully Autonomous and Decentralized Quadrotor Swarm System in Cluttered Environments)
+  
+---
+
 
 ## Filter-Based SLAM
 
@@ -173,6 +169,16 @@ Z. Zhang, G. Gallego, and D. Scaramuzza, “On the Comparison of Gauge Freedom H
 T.-C. Dong-Si and A. I. Mourikis, “Consistency analysis for sliding-window visual odometry,” in *2012 IEEE International Conference on Robotics and Automation*, St Paul, MN, USA: IEEE, May 2012, pp. 5202–5209. doi: [10.1109/ICRA.2012.6225246](https://doi.org/10.1109/ICRA.2012.6225246).
 
 在边际化过程中看似信息增加，实则可信度下降了，造成了可观性的退化。将FEJ方法应用在滑窗，避免了秩的增加和虚假信息的产生。但这导致线性化精确程度的失准，不过这种损失并不显著。
+
+#### On the Importance of Uncertainty Representation in Active SLAM
+
+M. L. Rodriguez-Arevalo, J. Neira, and J. A. Castellanos, “On the Importance of Uncertainty Representation in Active SLAM,” *IEEE Trans. Robot.*, vol. 34, no. 3, pp. 829–834, Jun. 2018, doi: [10.1109/TRO.2018.2808902](https://doi.org/10.1109/TRO.2018.2808902). ==TODO==
+
+---
+
+#### Symmetry and Uncertainty-Aware Object SLAM for 6DoF Object Pose Estimation
+
+N. Merrill *et al.*, “Symmetry and Uncertainty-Aware Object SLAM for 6DoF Object Pose Estimation,” in *2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, New Orleans, LA, USA: IEEE, Jun. 2022, pp. 14881–14890. doi: [10.1109/CVPR52688.2022.01448](https://doi.org/10.1109/CVPR52688.2022.01448). ==TODO==
 
 ---
 
@@ -485,37 +491,350 @@ J. Hartmann, J. H. Klussendorff, and E. Maehle, “A comparison of feature descr
 
 ---
 
-### Lidar/Radar SLAM
+#### Keyframe-Based Visual-Inertial SLAM using Nonlinear Optimization
 
-[1]
+S. Leutenegger, P. Furgale, V. Rabaud, M. Chli, K. Konolige, and R. Siegwart, “Keyframe-Based Visual-Inertial SLAM using Nonlinear Optimization,” in *Robotics: Science and Systems IX*, Robotics: Science and Systems Foundation, Jun. 2013. doi: [10.15607/RSS.2013.IX.037](https://doi.org/10.15607/RSS.2013.IX.037). ==TODO==
+
+---
+
+#### On-Manifold Preintegration for Real-Time Visual--Inertial Odometry 
+
+C. Forster, L. Carlone, F. Dellaert, and D. Scaramuzza, “On-Manifold Preintegration for Real-Time Visual--Inertial Odometry,” *IEEE Trans. Robot.*, vol. 33, no. 1, pp. 1–21, Feb. 2017, doi: [10.1109/TRO.2016.2597321](https://doi.org/10.1109/TRO.2016.2597321). ==TODO==
+
+感觉这篇的数学表示很详细，结合之前李群李代数的笔记，小小重新推一遍
+
+##### 特殊正交群 $SO(3)$
+
+定义特殊正交群 SO(3)$
+$$
+SO(3) = \set{R\in\R^{3\times3}:R^TR=I,\det(R)=1}
+$$
+定义流形上的切空间 $\mathfrak {so}(3)$
+$$
+\boldsymbol\omega^\wedge = \begin{bmatrix}
+\omega_1 \\ \omega_2 \\ \omega_3
+\end{bmatrix}^\wedge = \begin{bmatrix}
+0 & -\omega_3 & \omega_2 \\
+\omega_3 & 0 & -\omega_1 \\
+-\omega_2 & \omega_1 & 0 \\
+\end{bmatrix} \in \mathfrak{so}(3) \tag{1}
+$$
+$\mathfrak {so}(3)$ 和 $\R^3$ 的转换由反对称算子给出
+$$
+S=\boldsymbol\omega^\wedge, S^\vee=\boldsymbol\omega
+$$
+由指数映射的泰勒展开和叉积的性质可以得到 $\exp:\mathfrak {so}(3)\to SO(3)$
+$$
+\begin{aligned}
+R 
+&= \exp(\phi^\wedge) \\ 
+&= \sum_{n=0}^\infty\frac{(\phi^\wedge)^n}{n!} \\
+&= I + \bigg(||\phi||-\frac{||\phi||^3}{3!}+\frac{||\phi||^5}{5!}+\cdots\bigg)\phi^\wedge+\bigg(\frac{||\phi||^2}{2!}-\frac{||\phi||^4}{4!}+\frac{||\phi||^6}{6!}-\cdots\bigg)(\phi^\wedge)^2 \\
+&= I + \frac{\sin||\phi||}{||\phi||}\phi^\wedge+\frac{1-\cos||\phi||}{||\phi||^2}(\phi^\wedge)^2 \\
+&\approx I + \phi^\wedge
+\end{aligned} \tag{3}
+$$
+对数映射则由特殊正交群的迹和李群性质得到
+$$
+\begin{aligned}
+{\rm tr}(R) &= {\rm tr}(I) + \frac{\sin||\phi||}{||\phi||}{\rm tr}(\phi^\wedge)+\frac{1-\cos||\phi||}{||\phi||^2}{\rm tr}[(\phi^\wedge)^2] \\
+&= 3 + 0 + \frac{1-\cos||\phi||}{||\phi||^2}(-||\phi^\wedge||^2) \\
+&= 3 + 0 + \frac{1-\cos||\phi||}{||\phi||^2}(-2||\phi||^2) \\
+&= 3 + 2\cos||\phi|| - 2
+\end{aligned}
+$$
+
+$$
+||\phi|| = \arccos\bigg(\frac{{\rm tr}(R) - 1}2\bigg) + 2k\pi
+$$
+
+当 $\phi\ne0\Leftrightarrow R\ne I$ 时，构造对此部分和非对称部分
+$$
+R=\underbrace{\frac{\sin||\phi||}{||\phi||}\phi^\wedge}_{\frac12(R-R^T)}+\underbrace{I+\frac{1-\cos||\phi||}{||\phi||^2}(\phi^\wedge)^2}_{\frac12(R+R^T)}
+$$
+于是
+$$
+\begin{aligned}
+\phi &= \log(R)^\vee \\
+&= \bigg[\frac{||\phi||(R-R^T)}{2\sin||\phi||}\bigg]^\vee \\
+&= \frac{||\phi||}{2\sin||\phi||}\begin{bmatrix}
+r_{32} - r_{23} \\
+r_{13} - r_{31} \\
+r_{21} - r_{12}
+\end{bmatrix}
+\end{aligned} \tag{5}
+$$
+为简便下面将 $\text{Exp}$ 和 $\text{Log}$ 定义在 $\R^3$ 和 $SO(3)$ 之间
+
+记三维空间中一任意向量 $\bf v$ 绕旋转轴 $\bf n=\begin{pmatrix}n_x\\n_y\\n_z\end{pmatrix}$ 旋转 $\theta$ 得到新向量 $\bf v_{rot}$，其中 $\bf n$ 为单位向量，$n_x^2+n_y^2+n_z^2=1$. 则 $\bf v$ 可以根据平行和正交于 $\bf n$ 分为两部分 $\bf v_\parallel$ 和 $\bf v_\perp$，满足 $\bf v=\bf v_\parallel+\bf v_\perp$
+
+其中
+
+$$
+\begin{cases}
+\mathbf v_\parallel = (\mathbf v\cdot\mathbf n)\mathbf n \\
+\mathbf v_\perp = \mathbf v-(\mathbf v\cdot\mathbf n)\mathbf n = -\mathbf n\times(\mathbf n\times\mathbf v)
+\end{cases}
+$$
+
+$$
+\begin{aligned}
+\mathbf v_{rot} &= \mathbf v_{\parallel rot} + \mathbf v_{\perp rot} \\
+&= \mathbf v_\parallel + \cos\theta\mathbf v_\perp + \sin\theta\mathbf n\times\bf v_\perp \\
+&= (\mathbf v\cdot\mathbf n)n + \cos\theta\mathbf v_\perp + \sin\theta\mathbf n\times\mathbf v \\
+&= \cos\theta\mathbf v+(1-\cos\theta)(\mathbf n\cdot\mathbf v)\mathbf n + \sin\theta\mathbf n\times\mathbf v
+\end{aligned}
+$$
+
+也就得到了罗德里格斯旋转公式 Rodrigues' Rotation Formula
+
+将其重新写在流形上则有
+$$
+R = \cos(||\phi||)I+[1-\cos(||\phi||)]\frac{\phi\phi^T}{||\phi||^2} + \sin(||\phi||)\phi^\wedge
+$$
+由此得到$R$ 的左右扰动雅可比矩阵
+$$
+\begin{cases}
+J_l(\phi) &= I + \frac{1-\cos(||\phi||)}{||\phi||^2}\phi^\wedge + \frac{||\phi||-\sin(||\phi||)}{||\phi||^3}(\phi^\wedge)^2 \\
+J_r(\phi) &= I - \frac{1-\cos(||\phi||)}{||\phi||^2}\phi^\wedge + \frac{||\phi||-\sin(||\phi||)}{||\phi||^3}(\phi^\wedge)^2 \\
+J_l^{-1}(\phi) &= I - \frac12\phi^\wedge + \left(\frac1{||\phi||^2} + \frac{1+\cos(||\phi||)}{2||\phi||\sin(||\phi||)}\right)(\phi^\wedge)^2 \\
+J_r^{-1}(\phi) &= I + \frac12\phi^\wedge + \left(\frac1{||\phi||^2} + \frac{1+\cos(||\phi||)}{2||\phi||\sin(||\phi||)}\right)(\phi^\wedge)^2 \\
+\end{cases} \tag{8}
+$$
+由于特殊正交群无法定义一般形式的增量，只能利用李代数的扰动模型
+$$
+\text{Exp}(\phi+\Delta\phi) = \text{Exp}(\bold J_l\Delta\phi)\text{Exp}(\phi) = \text{Exp}(\phi) = \text{Exp}(\bold J_r \Delta\phi) \tag{7}
+$$
+李群上有二元运算符李括号
+$$
+[A,B] = AB-BA
+$$
+由贝克-坎贝尔-豪斯多夫公式 Baker-Campbell-Hausdorff Formula 可得
+$$
+\begin{aligned}
+&\log(\text{Exp}(\alpha)\text{Exp}(\beta))\\
+=&\log(AB)\\=&\sum_{n=1}^\infty\frac{(-1)^{n-1}}n\sum_{r_i+s_i>0,i\in[1,n]}\frac{(\sum_{i=1}^n(r_i+s_i))^{-1}}{\Pi_{i=1}^n(r_i!s_i!)}[A^{r_1}B^{s_1}A^{r_2}B^{s_2}\cdots A^{r_n}B^{s_n}]\\
+=&A+B+\frac12[A,B]+\frac1{12}[A,[A,B]]-\frac1{12}[B,[A,B]]+\cdots\\
+\approx&
+\begin{cases}
+\beta+J_l(\beta)^{-1}\alpha,&\alpha\to0\\
+\alpha+J_r(\alpha)^{-1}\beta,&\beta\to0\\
+\end{cases}
+\end{aligned}\tag{9}
+$$
+对任意向量 $v\in\R^3$, 由叉积及特殊正交群的性质可得
+$$
+(Rp)^\wedge v = (Rp) \times v = (Rp) \times (RR^{-1}v) = R[p\times (R^{-1}v)] = Rp^\wedge R^Tv
+$$
+$Rp^\wedge R^T=(Rp)^\wedge$ 对指数映射泰勒展开的每一项成立，因此有
+$$
+R\exp(\phi^\wedge)R^T = \exp((R\phi)^\wedge)
+$$
+等价地有
+$$
+R\text{Exp}(\phi)R^T=\text{Exp}(R\phi) \tag{10}
+$$
+
+##### 特殊正交群的不确定性描述
+
+一种直觉地定义是在旋转矩阵上右乘一个微小扰动，这个扰动服从正态分布
+$$
+\tilde R=R\cdot\text{Exp}(\epsilon),\ \epsilon\in\mathcal N(0,\Sigma)\tag{12}
+$$
+对高斯分布有积分模型
+$$
+\int_{\R^3}p(\epsilon){\rm d}\epsilon = \int_{\R^3}\frac1{\sqrt{(2\pi)^3\det(\Sigma)}}\cdot\exp\bigg({-\frac12||\epsilon||^2_\Sigma}\bigg){\rm d}\epsilon=1 \tag{13}
+$$
+将 $\epsilon$ 用 $\text{Log}(R^{-1}\tilde R)$ 进行替换
+$$
+\int_{SO(3)}\frac1{\sqrt{(2\pi)^3\det(\Sigma)}}\cdot\exp\bigg({-\frac12\big|\big|\text{Log}(R^{-1}\tilde R)\big|\big|^2_\Sigma}\bigg)\left|\frac{{\rm d}\epsilon}{{\rm d}\tilde R}\right|{\rm d}\tilde R=1
+$$
+缩放因子由右乘模型给出
+$$
+\left|\frac{{\rm d}\epsilon}{{\rm d}\tilde R}\right| = \left|\frac1{J_r(\text{Log}(R^{-1}\tilde R))}\right|
+$$
+重新整理得到
+$$
+\int_{SO(3)}\frac1{\sqrt{(2\pi)^3\det(\Sigma)}}\cdot\left|\frac1{J_r(\text{Log}(R^{-1}\tilde R))}\right|\cdot\exp\bigg({-\frac12\big|\big|\text{Log}(R^{-1}\tilde R)\big|\big|^2_\Sigma}\bigg){\rm d}\tilde R=1\tag{14}
+$$
+由多元高斯分布模型可得
+$$
+p(\tilde R) =\frac1{\sqrt{(2\pi)^3\det(\Sigma)}}\cdot\left|\frac1{J_r(\text{Log}(R^{-1}\tilde R))}\right|\cdot\exp\bigg({-\frac12\big|\big|\text{Log}(R^{-1}\tilde R)\big|\big|^2_\Sigma}\bigg) \tag{15}
+$$
+对于微小扰动，利用常数项近似 $\frac1{\sqrt{(2\pi)^3\det(\Sigma)}}\cdot\left|\frac1{J_r(\text{Log}(R^{-1}\tilde R))}\right|$, 得到旋转矩阵的负对数似然函数
+$$
+\begin{aligned}
+\mathcal L(R) &= \frac12\big|\big|\text{Log}(R^{-1}\tilde R)\big|\big|^2_\Sigma + c \\
+&= \frac12\big|\big|\text{Log}(\tilde R^{-1}R)\big|\big|^2_\Sigma + c
+\end{aligned} \tag{16}
+$$
+
+##### 流形上的高斯牛顿法
+
+对于一般的高斯牛顿法有
+$$
+\mathbf x^* = \arg\min_{\mathbf x} f(\mathbf x) \Rightarrow \mathbf x^* = \mathbf x + \arg\min_{\Delta\mathbf x}f(\mathbf x+\Delta\mathbf x)
+$$
+对于流形则有
+$$
+x^*=\arg\min_{x\in\mathcal M} f(x) \Rightarrow x^* = \mathcal R_x\cdot\arg\min_{\delta x\in\R^n} f(\mathcal R_x(\delta x))\tag{18}
+$$
+在 $SO(3)$ 群中映射被定义为
+$$
+\mathcal R_R(\delta\phi) = R\text{Exp}(\delta\phi),\ \delta\phi\in\R^3\tag{20}
+$$
+在 $SE(3)$ 群中则为
+$$
+\mathcal R_T(\delta\phi,\delta\mathbf p)=\begin{bmatrix}R\text{Exp}(\delta\phi) & \mathbf p+R\delta\mathbf p\end{bmatrix},\ \begin{bmatrix}\delta\phi \\ \delta\mathbf p\end{bmatrix}\in\R^6\tag{21}
+$$
+
+---
+
+#### VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator
+
+T. Qin, P. Li, and S. Shen, “VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator,” *IEEE Trans. Robot.*, vol. 34, no. 4, pp. 1004–1020, Aug. 2018, doi: [10.1109/TRO.2018.2853729](https://doi.org/10.1109/TRO.2018.2853729). ==TODO==
+
+---
+
+J. Sturm, N. Engelhard, F. Endres, W. Burgard, and D. Cremers, “A benchmark for the evaluation of RGB-D SLAM systems,” in *2012 IEEE/RSJ International Conference on Intelligent Robots and Systems*, Vilamoura-Algarve, Portugal: IEEE, Oct. 2012, pp. 573–580. doi: [10.1109/IROS.2012.6385773](https://doi.org/10.1109/IROS.2012.6385773).
+
+---
+
+C. Forster, M. Pizzoli, and D. Scaramuzza, “SVO: Fast semi-direct monocular visual odometry,” in *2014 IEEE International Conference on Robotics and Automation (ICRA)*, Hong Kong, China: IEEE, May 2014, pp. 15–22. doi: [10.1109/ICRA.2014.6906584](https://doi.org/10.1109/ICRA.2014.6906584).
+
+---
+
+R. Mur-Artal, J. M. M. Montiel, and J. D. Tardos, “ORB-SLAM: A Versatile and Accurate Monocular SLAM System,” *IEEE Trans. Robot.*, vol. 31, no. 5, pp. 1147–1163, Oct. 2015, doi: [10.1109/TRO.2015.2463671](https://doi.org/10.1109/TRO.2015.2463671).
+
+---
+
+R. Mur-Artal and J. D. Tardos, “ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras,” *IEEE Trans. Robot.*, vol. 33, no. 5, pp. 1255–1262, Oct. 2017, doi: [10.1109/TRO.2017.2705103](https://doi.org/10.1109/TRO.2017.2705103).
+
+---
+
+J. Engel, V. Koltun, and D. Cremers, “Direct Sparse Odometry,” *IEEE Trans. Pattern Anal. Mach. Intell.*, vol. 40, no. 3, pp. 611–625, Mar. 2018, doi: [10.1109/TPAMI.2017.2658577](https://doi.org/10.1109/TPAMI.2017.2658577).
+
+---
+
+C. Campos, R. Elvira, J. J. G. Rodriguez, J. M. M. Montiel, and J. D. Tardos, “ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual–Inertial, and Multimap SLAM,” *IEEE Trans. Robot.*, vol. 37, no. 6, pp. 1874–1890, Dec. 2021, doi: [10.1109/TRO.2021.3075644](https://doi.org/10.1109/TRO.2021.3075644).
+
+---
+
+### Lidar SLAM
+
+Y. Wang, Z. Sun, C.-Z. Xu, S. E. Sarma, J. Yang, and H. Kong, “LiDAR Iris for Loop-Closure Detection,” in *2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Las Vegas, NV, USA: IEEE, Oct. 2020, pp. 5769–5775. doi: [10.1109/IROS45743.2020.9341010](https://doi.org/10.1109/IROS45743.2020.9341010).
+
+Z. Liu *et al.*, “Voxel-SLAM: A Complete, Accurate, and Versatile LiDAR-Inertial SLAM System,” Oct. 11, 2024, *arXiv*: arXiv:2410.08935. doi: [10.48550/arXiv.2410.08935](https://doi.org/10.48550/arXiv.2410.08935).
+
+N. Wang, X. Chen, C. Shi, Z. Zheng, H. Yu, and H. Lu, “SGLC: Semantic Graph-Guided Coarse-Fine-Refine Full Loop Closing for LiDAR SLAM,” Nov. 10, 2024, *arXiv*: arXiv:2407.08106. doi: [10.48550/arXiv.2407.08106](https://doi.org/10.48550/arXiv.2407.08106).
 
 W. Xu and F. Zhang, “FAST-LIO: A Fast, Robust LiDAR-Inertial Odometry Package by Tightly-Coupled Iterated Kalman Filter,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 2, pp. 3317–3324, Apr. 2021, doi: [10.1109/LRA.2021.3064227](https://doi.org/10.1109/LRA.2021.3064227).
 
-
-
-[2]
-
 W. Xu, Y. Cai, D. He, J. Lin, and F. Zhang, “FAST-LIO2: Fast Direct LiDAR-Inertial Odometry,” *IEEE Trans. Robot.*, vol. 38, no. 4, pp. 2053–2073, Aug. 2022, doi: [10.1109/TRO.2022.3141876](https://doi.org/10.1109/TRO.2022.3141876).
-
-
-
-[3]
 
 J. Lin and F. Zhang, “Loam livox: A fast, robust, high-precision LiDAR odometry and mapping package for LiDARs of small FoV,” in *2020 IEEE International Conference on Robotics and Automation (ICRA)*, Paris, France: IEEE, May 2020, pp. 3126–3131. doi: [10.1109/ICRA40945.2020.9197440](https://doi.org/10.1109/ICRA40945.2020.9197440).
 
 ---
 
-### Multi-Sensor SLAM
+### Radar SLAM
 
 [1]
 
-J. Lin and F. Zhang, “R3 LIVE: A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package,” in *2022 International Conference on Robotics and Automation (ICRA)*, Philadelphia, PA, USA: IEEE, May 2022, pp. 10672–10678. doi: [10.1109/ICRA46639.2022.9811935](https://doi.org/10.1109/ICRA46639.2022.9811935).
+L. He, X. Wang, and H. Zhang, “M2DP: A novel 3D point cloud descriptor and its application in loop closure detection,” in *2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Daejeon, South Korea: IEEE, Oct. 2016, pp. 231–237. doi: [10.1109/IROS.2016.7759060](https://doi.org/10.1109/IROS.2016.7759060).
 
-
+---
 
 [2]
 
-J. Lin, C. Zheng, W. Xu, and F. Zhang, “R2 LIVE: A Robust, Real-Time, LiDAR-Inertial-Visual Tightly-Coupled State Estimator and Mapping,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 4, pp. 7469–7476, Oct. 2021, doi: [10.1109/LRA.2021.3095515](https://doi.org/10.1109/LRA.2021.3095515).
+Z. Hong, Y. Petillot, and S. Wang, “RadarSLAM: Radar based Large-Scale SLAM in All Weathers,” in *2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Las Vegas, NV, USA: IEEE, Oct. 2020, pp. 5164–5170. doi: [10.1109/IROS45743.2020.9341287](https://doi.org/10.1109/IROS45743.2020.9341287).
+
+---
+
+[3]
+
+A. Kramer, C. Stahoviak, A. Santamaria-Navarro, A. Agha-mohammadi, and C. Heckman, “Radar-Inertial Ego-Velocity Estimation for Visually Degraded Environments,” in *2020 IEEE International Conference on Robotics and Automation (ICRA)*, Paris, France: IEEE, May 2020, pp. 5739–5746. doi: [10.1109/ICRA40945.2020.9196666](https://doi.org/10.1109/ICRA40945.2020.9196666).
+
+---
+
+[4]
+
+C. X. Lu *et al.*, “milliEgo: single-chip mmWave radar aided egomotion estimation via deep sensor fusion,” in *Proceedings of the 18th Conference on Embedded Networked Sensor Systems*, Virtual Event Japan: ACM, Nov. 2020, pp. 109–122. doi: [10.1145/3384419.3430776](https://doi.org/10.1145/3384419.3430776).
+
+---
+
+[5]
+
+X. Xu, H. Yin, Z. Chen, Y. Li, Y. Wang, and R. Xiong, “DiSCO: Differentiable Scan Context With Orientation,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 2, pp. 2791–2798, Apr. 2021, doi: [10.1109/LRA.2021.3060741](https://doi.org/10.1109/LRA.2021.3060741).
+
+---
+
+[6]
+
+N. Merrill *et al.*, “Symmetry and Uncertainty-Aware Object SLAM for 6DoF Object Pose Estimation,” in *2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, New Orleans, LA, USA: IEEE, Jun. 2022, pp. 14881–14890. doi: [10.1109/CVPR52688.2022.01448](https://doi.org/10.1109/CVPR52688.2022.01448).
+
+---
+
+[7]
+
+K. Retan, F. Loshaj, and M. Heizmann, “Radar Odometry on SE(3) with Constant Acceleration Motion Prior and Polar Measurement Model,” Sep. 11, 2022, *arXiv*: arXiv:2209.05956. doi: [10.48550/arXiv.2209.05956](https://doi.org/10.48550/arXiv.2209.05956).
+
+---
+
+[8]
+
+X. Li, H. Zhang, and W. Chen, “4D Radar-Based Pose Graph SLAM With Ego-Velocity Pre-Integration Factor,” *IEEE Robot. Autom. Lett.*, vol. 8, no. 8, pp. 5124–5131, Aug. 2023, doi: [10.1109/LRA.2023.3292574](https://doi.org/10.1109/LRA.2023.3292574).
+
+---
+
+[9]
+
+H. Yin, S. Li, Y. Tao, J. Guo, and B. Huang, “Dynam-SLAM: An Accurate, Robust Stereo Visual-Inertial SLAM Method in Dynamic Environments,” *IEEE Trans. Robot.*, vol. 39, no. 1, pp. 289–308, Feb. 2023, doi: [10.1109/TRO.2022.3199087](https://doi.org/10.1109/TRO.2022.3199087).
+
+---
+
+[10]
+
+J. Zhang *et al.*, “4DRadarSLAM: A 4D Imaging Radar SLAM System for Large-scale Environments based on Pose Graph Optimization,” in *2023 IEEE International Conference on Robotics and Automation (ICRA)*, London, United Kingdom: IEEE, May 2023, pp. 8333–8340. doi: [10.1109/ICRA48891.2023.10160670](https://doi.org/10.1109/ICRA48891.2023.10160670).
+
+---
+
+[11]
+
+Q. Huang, Y. Liang, Z. Qiao, S. Shen, and H. Yin, “Less is More: Physical-Enhanced Radar-Inertial Odometry,” in *2024 IEEE International Conference on Robotics and Automation (ICRA)*, Yokohama, Japan: IEEE, May 2024, pp. 15966–15972. doi: [10.1109/ICRA57147.2024.10611471](https://doi.org/10.1109/ICRA57147.2024.10611471).
+
+---
+
+[12]
+
+E. Sie, X. Wu, H. Guo, and D. Vasisht, “Radarize: Enhancing Radar SLAM with Generalizable Doppler-Based Odometry,” in *Proceedings of the 22nd Annual International Conference on Mobile Systems, Applications and Services*, Jun. 2024, pp. 331–344. doi: [10.1145/3643832.3661871](https://doi.org/10.1145/3643832.3661871).
+
+---
+
+[13]
+
+D. Wang, S. May, and A. Nuechter, “RIV-SLAM: Radar-Inertial-Velocity optimization based graph SLAM,” in *2024 IEEE 20th International Conference on Automation Science and Engineering (CASE)*, Bari, Italy: IEEE, Aug. 2024, pp. 774–781. doi: [10.1109/CASE59546.2024.10711511](https://doi.org/10.1109/CASE59546.2024.10711511).
+
+---
+
+[14]
+
+Y. Xu, Q. Huang, S. Shen, and H. Yin, “Modeling Point Uncertainty in Radar SLAM,” Feb. 25, 2024, *arXiv*: arXiv:2402.16082. doi: [10.48550/arXiv.2402.16082](https://doi.org/10.48550/arXiv.2402.16082).
+
+---
+
+### Multi-Sensor SLAM
+
+#### R<sup>2</sup> LIVE: A Robust, Real-Time, LiDAR-Inertial-Visual Tightly-Coupled State Estimator and Mapping
+
+J. Lin, C. Zheng, W. Xu, and F. Zhang, “R<sup>2</sup> LIVE: A Robust, Real-Time, LiDAR-Inertial-Visual Tightly-Coupled State Estimator and Mapping,” *IEEE Robot. Autom. Lett.*, vol. 6, no. 4, pp. 7469–7476, Oct. 2021, doi: [10.1109/LRA.2021.3095515](https://doi.org/10.1109/LRA.2021.3095515).
+
+---
+
+#### R<sup>3</sup> LIVE: A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package
+
+J. Lin and F. Zhang, “R<sup>3</sup> LIVE: A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package,” in *2022 International Conference on Robotics and Automation (ICRA)*, Philadelphia, PA, USA: IEEE, May 2022, pp. 10672–10678. doi: [10.1109/ICRA46639.2022.9811935](https://doi.org/10.1109/ICRA46639.2022.9811935).
+
+---
 
 #### VINS-Multi: A Robust Asynchronous Multi-camera-IMU State Estimator
 
@@ -650,7 +969,7 @@ D. Saldana, B. Gabrich, G. Li, M. Yim, and V. Kumar, “ModQuad: The Flying Modu
 
 近距离时需要高精度相对定位
 
-[1]
+#### EGO-Swarm: A Fully Autonomous and Decentralized Quadrotor Swarm System in Cluttered Environments
 
 X. Zhou, J. Zhu, H. Zhou, C. Xu, and F. Gao, “EGO-Swarm: A Fully Autonomous and Decentralized Quadrotor Swarm System in Cluttered Environments,” in *2021 IEEE International Conference on Robotics and Automation (ICRA)*, Xi’an, China: IEEE, May 2021, pp. 4101–4107. doi: [10.1109/ICRA48506.2021.9561902](https://doi.org/10.1109/ICRA48506.2021.9561902).
 
